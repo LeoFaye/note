@@ -65,3 +65,34 @@ java.util.concurrent.atomic包定义了支持对单个变量进行原子操作�
 ```
 int r = ThreadLocalRandom.current() .nextInt(4, 77);
 ```
+# CAS compare and swap
+加锁是一种悲观的策略，它总是认为每次访问共享资源的时候，总会发生冲突，所以宁愿牺牲性能（时间）来保证数据安全。  
+
+无锁是一种乐观的策略，它假设线程访问共享资源不会发生冲突，所以不需要加锁，因此线程将不断执行，不需要停止；一旦碰到冲突，就重试当前操作直到没有冲突为止。  
+
+无锁的策略使用一种叫做比较交换的技术（CAS Compare And Swap）来鉴别线程冲突，一旦检测到冲突产生，就重试当前操作直到没有冲突为止。  
+
+由于CAS操作属于乐观派，它总是认为自己能够操作成功，所以操作失败的线程将会再次发起操作，而不是被OS挂起；所以说，即使CAS操作没有使用同步锁，其它线程也能够知道对共享变量的影响。  
+
+因为其它线程没有被挂起，并且将会再次发起修改尝试，所以无锁操作即CAS操作天生免疫死锁。  
+
+另外一点需要知道的是，CAS是系统原语，CAS操作是一条CPU的原子指令，所以不会有线程安全问题。
+
+> Java提供的CAS操作：原子操作类
+
+Java提供了一个Unsafe类，其内部方法操作可以像C的指针一样直接操作内存，方法都是native的。  
+
+为了让Java程序员能够受益于CAS等CPU指令，JDK并发包中有一个atomic包，它们是原子操作类，它们使用的是无锁的CAS操作，并且统统线程安全；atomic包下的几乎所有的类都使用了这个Unsafe类。
+
+> 分类
+- 原子更新基本类型 `AtomicInteger` `AtomicLong` `AtomicBoolean`
+- 原子更新引用类型 `AtomicMarkableReference` `AtomicStampedReference` `AtomicReference`
+- 原子更新数组类型 `AtomicIntegerArray` `AtomicLongArray` `AtomicReferenceArray`
+- 原子更新字段类型 `AtomicIntegerFieldUpdater` `AtomicLongFieldUpdater` `AtomicReferenceFieldUpdater`
+
+> ABA问题解决方案
+
+原子操作类提供了一个带有时间戳的原子操作类 `AtomicStampedReference`  
+当带有时间戳的原子操作类`AtomicStampedReference`对应的数值被修改时，除了更新数据本身外，还必须要更新时间戳。  
+当AtomicStampedReference设置对象值时，对象值以及时间戳都必须满足期望值，写入才会成功。  
+因此，即使对象值被反复读写，写回原值，只要时间戳发生变化，就能防止不恰当的写入。
