@@ -2,9 +2,7 @@
 > 递归实现
 
 ![avatar](img/linkedlist_reverse_1.png)
-***
 ![avatar](img/linkedlist_reverse_2.png)
-***  
 ![avatar](img/linkedlist_reverse_3.png) 
 ```
 // 函数返回的是反转后的头节点
