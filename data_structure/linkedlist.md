@@ -78,3 +78,59 @@ public class LinkedListReverser {
 }
 
 ```
+
+# 链表中 delete if
+
+比如删除值为2的节点
+
+![avatar](img/linkedlist_delete_if_1.png)
+
+把问题从中间切开，那么久假设第一个2已经被删掉了，现在要删除第二个2，  
+这一轮循环要处理的就是这个2，只要把3指向5就行了，但是要把3指向5，就需要一个指针指向3，
+删除后看下一个节点
+
+循环不变式就是：从链表开头到节点previous，所有值为2的节点都被删除  
+然后考虑previous的next节点是否是2，是的话就删除，不是的话就把previous向后移一格  
+（删掉的情况下不移动previous，不然连续两个2就删不掉）
+
+![avatar](img/linkedlist_delete_if_2.png)
+
+还有一个问题是头节点，如果第一个节点就是2怎么处理？它没有previous  
+有两种处理方法：
+
+- 特殊处理
+- 增加虚拟头节点
+
+> 循环写法
+
+```java
+public class LinkedListDeletor {
+    public Node deleteIfEquals(Node head, int value) {
+        while (head != null && head.value == value) {
+            head = head.next;
+        }
+        
+        // 如果链表都是要删除的元素，这样的话head到这一步还是可能为null
+        if (head == null) {
+            return null;
+        }
+        
+        Node prev = head;
+        // Loop invariant:list nodes from head up to prev has been
+        // processed. (Nodes with values equal to value are deleted.)
+        
+        // 我们已经假设上面注释的循环不变式成立，链表开头到prev的借点已经
+        // 正确处理，所以这里不考虑prev == null的情况        
+        while(prev.next != null) {
+            if (prev.next.value == value) {
+                // delete it
+                prev.next = prev.next.next;
+            } else {
+                prev = prev.next;
+            }
+        }
+        
+        return head;
+    }
+}
+```
