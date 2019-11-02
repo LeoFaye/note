@@ -21,7 +21,7 @@ create index index_name on table(col_name(n))
 ```
 索引太小就会使不重复的索引值降低，导致索引的选择性变差，如图：  
 第二个是选择2个字节建立前缀索引，第三个是选择3个字节建立前缀索引，第3个的索引选择性更好。  
-![avatar](img/mysql_prefix_index.png)
+![image](https://leofaye-ghb.obs.cn-east-3.myhuaweicloud.com/note/mysql/mysql_prefix_index.png)
 
 3.经常一起查询的列建立联合索引  
 > 如何选择索引列的顺序？(重要)
