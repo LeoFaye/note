@@ -1,6 +1,6 @@
 # jvm 内存模型
 
-![avatar](img/jvm_memory_model.png)
+![image](https://leofaye-ghb.obs.cn-east-3.myhuaweicloud.com/note/java/jvm_memory_model.png)
 
 > 本地方法栈
 

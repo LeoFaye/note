@@ -21,25 +21,25 @@ VM options: -Xmx10m -Xms10m
 用于查看java的进程，展示进程号和进程：  
 可以查看程序有没有启动起来  
 
-![avatar](img/jvm_instruction_jps.png)
+![image](https://leofaye-ghb.obs.cn-east-3.myhuaweicloud.com/note/java/jvm_instruction_jps.png)
 
 # 指令jconsole
 命令效果如下，点击需要查看的程序，连接：
 
-![avatar](img/jvm_instruction_jconsole_connect.png)  
+![image](https://leofaye-ghb.obs.cn-east-3.myhuaweicloud.com/note/java/jvm_instruction_jconsole_connect.png)  
 
 可以看到堆内存使用量，线程数，加载的类，cpu占用率等：  
 
-![avatar](img/jvm_instruction_jconsole_show.png)  
+![image](https://leofaye-ghb.obs.cn-east-3.myhuaweicloud.com/note/java/jvm_instruction_jconsole_show.png)  
 
 具体查看内存：  
 
-![avatar](img/jvm_instruction_jconsole_memory.png)
+![image](https://leofaye-ghb.obs.cn-east-3.myhuaweicloud.com/note/java/jvm_instruction_jconsole_memory.png)
 
 # 指令jstat
 主要用来查看内存的使用状况：  
 
-![avatar](img/jvm_instruction_jstat.png)
+![image](https://leofaye-ghb.obs.cn-east-3.myhuaweicloud.com/note/java/jvm_instruction_jstat.png)
 
 # 指令jstack
 用来分析线程，jstack pid（显示内容和jconsole里线程部分的一样）
@@ -48,12 +48,12 @@ VM options: -Xmx10m -Xms10m
 把java进程的内存状态dump下来  
 jmp -dump:file=filename pid  
 
-![avatar](img/jvm_instruction_jmap.png)  
+![image](https://leofaye-ghb.obs.cn-east-3.myhuaweicloud.com/note/java/jvm_instruction_jmap.png)  
 
 或者直接打印堆上的内存信息：jmap -heap pid  
 （这个内存信息比jstat的好，因为有单位标识）  
 
-![avatar](img/jvm_instruction_jmap_heap.png)
+![image](https://leofaye-ghb.obs.cn-east-3.myhuaweicloud.com/note/java/jvm_instruction_jmap_heap.png)
 
 # 图形化工具visual VM
 可以查看各种信息，也可以打开jmap dump下来的文件。
