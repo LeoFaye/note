@@ -1,11 +1,11 @@
 # 链表反转
 > 递归实现 （缺点：如果有100万个节点，递归就要调100万次，系统开销很大）
 
-![avatar](img/linkedlist_reverse_1.png)
+![image](https://leofaye-ghb.obs.cn-east-3.myhuaweicloud.com/note/algorithm/linkedlist_reverse_1.png)
 
-![avatar](img/linkedlist_reverse_2.png)
+![image](https://leofaye-ghb.obs.cn-east-3.myhuaweicloud.com/note/algorithm/linkedlist_reverse_2.png)
 
-![avatar](img/linkedlist_reverse_3.png) 
+![image](https://leofaye-ghb.obs.cn-east-3.myhuaweicloud.com/note/algorithm/linkedlist_reverse_3.png) 
 
 ```java
 public class LinkedListReverser {
@@ -32,28 +32,28 @@ public class LinkedListReverser {
 
 考虑中间节点，假设已经循环了3次，1，2，3已经反转，4和5还没有动
 
-![avatar](img/linkedlist_reverse_loop_1.png)
+![image](https://leofaye-ghb.obs.cn-east-3.myhuaweicloud.com/note/algorithm/linkedlist_reverse_loop_1.png)
 
 3和4断掉了，各放一个变量来维持住3和4这两个节点
 
-![avatar](img/linkedlist_reverse_loop_2.png)
+![image](https://leofaye-ghb.obs.cn-east-3.myhuaweicloud.com/note/algorithm/linkedlist_reverse_loop_2.png)
 
 newHead指向反转成功的链表，currentHead指向还没有反转的链表这句话，  
 从循环的开始到循环的结束，在每一次的循环体中，都要成立。
   
 接下来，要把newHead和currentHead向前推进，并且推进1
 
-![avatar](img/linkedlist_reverse_loop_3.png)
+![image](https://leofaye-ghb.obs.cn-east-3.myhuaweicloud.com/note/algorithm/linkedlist_reverse_loop_3.png)
 
 再想想初始的时候，newHead和currentHead应该指向什么，因为循环开始之前，这句话也要成立
   
 newHead应该指向null，currentHead应该指向第一个节点 
 
-![avatar](img/linkedlist_reverse_loop_4.png)
+![image](https://leofaye-ghb.obs.cn-east-3.myhuaweicloud.com/note/algorithm/linkedlist_reverse_loop_4.png)
 
 然后一步一步向右推进，推进到当newHead指向5，currentHead指向null，就会发现newHead就是我们要的结果
 
-![avatar](img/linkedlist_reverse_loop_5.png)
+![image](https://leofaye-ghb.obs.cn-east-3.myhuaweicloud.com/note/algorithm/linkedlist_reverse_loop_5.png)
 
 ```java
 public class LinkedListReverser {
@@ -83,7 +83,7 @@ public class LinkedListReverser {
 
 比如删除值为2的节点
 
-![avatar](img/linkedlist_delete_if_1.png)
+![image](https://leofaye-ghb.obs.cn-east-3.myhuaweicloud.com/note/algorithm/linkedlist_delete_if_1.png)
 
 把问题从中间切开，那么久假设第一个2已经被删掉了，现在要删除第二个2，  
 这一轮循环要处理的就是这个2，只要把3指向5就行了，但是要把3指向5，就需要一个指针指向3，
@@ -93,7 +93,7 @@ public class LinkedListReverser {
 然后考虑previous的next节点是否是2，是的话就删除，不是的话就把previous向后移一格  
 （删掉的情况下不移动previous，不然连续两个2就删不掉）
 
-![avatar](img/linkedlist_delete_if_2.png)
+![image](https://leofaye-ghb.obs.cn-east-3.myhuaweicloud.com/note/algorithm/linkedlist_delete_if_2.png)
 
 还有一个问题是头节点，如果第一个节点就是2怎么处理？它没有previous  
 有两种处理方法：

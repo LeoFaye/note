@@ -4,11 +4,11 @@
 
 比如，从数组中任取2个数
 
-![avatar](img/combinations_1.png)
+![image](https://leofaye-ghb.obs.cn-east-3.myhuaweicloud.com/note/algorithm/combinations_1.png)
 
 需要把问题规模缩小，且缩小规模是1  
 
-![avatar](img/combinations_2.png)
+![image](https://leofaye-ghb.obs.cn-east-3.myhuaweicloud.com/note/algorithm/combinations_2.png)
 
 ```java
 
