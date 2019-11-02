@@ -1,9 +1,9 @@
 # 单例
-```
+```java
 public class Singleton {
     private Singleton() {}
     
-    private volatile static singleton = null;
+    private volatile static Singleton singleton = null;
     
     public static Singleton getInstance() {
         if (singleton == null) {
